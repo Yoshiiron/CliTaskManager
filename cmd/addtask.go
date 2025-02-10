@@ -22,7 +22,7 @@ var addtaskCmd = &cobra.Command{
 			return
 		}
 
-		file, tasks := utils.LoadTasks("tasks.json")
+		file, tasks := utils.LoadTasks()
 		defer file.Close()
 
 		if len(tasks) != 0 {
@@ -33,9 +33,10 @@ var addtaskCmd = &cobra.Command{
 		task.Description = args[0]
 		task.Status = "todo"
 		task.CreatedAt = time.Now().Format(time.RFC822)
+		task.UpdatedAt = "Not updated yet."
 		tasks = append(tasks, task)
 
-		utils.SaveTasks("tasks.json", tasks)
+		utils.SaveTasks(tasks)
 
 		fmt.Println(task)
 	},

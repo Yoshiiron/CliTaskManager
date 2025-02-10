@@ -22,7 +22,7 @@ var deleteCmd = &cobra.Command{
 			return
 		}
 
-		file, tasks := utils.LoadTasks("tasks.json")
+		file, tasks := utils.LoadTasks()
 		defer file.Close()
 
 		id, err := strconv.Atoi(args[0])
@@ -37,7 +37,7 @@ var deleteCmd = &cobra.Command{
 			}
 		}
 
-		utils.SaveTasks("tasks.json", tasks)
+		utils.SaveTasks(tasks)
 	},
 }
 

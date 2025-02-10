@@ -16,10 +16,10 @@ type Task struct {
 }
 
 func (t Task) String() string {
-	return fmt.Sprintf("Id: %v\nDescription: %v\nStatus: %v\nCreatedAt: %v", t.Id, t.Description, t.Status, t.CreatedAt)
+	return fmt.Sprintf("Id: %v\nDescription: %v\nStatus: %v\nCreatedAt: %v\nUpdatedAt: %v", t.Id, t.Description, t.Status, t.CreatedAt, t.UpdatedAt)
 }
 
-func LoadTasks(fileName string) (file *os.File, tasks []Task) {
+func LoadTasks() (file *os.File, tasks []Task) {
 	file, err := os.Open("tasks.json")
 	if err != nil {
 		log.Fatalf("Error openning file: %v", err)
@@ -34,8 +34,8 @@ func LoadTasks(fileName string) (file *os.File, tasks []Task) {
 	return
 }
 
-func SaveTasks(fileName string, tasks []Task) error {
-	file, err := os.Create(fileName)
+func SaveTasks(tasks []Task) error {
+	file, err := os.Create("tasks.json")
 	if err != nil {
 		return err
 	}
