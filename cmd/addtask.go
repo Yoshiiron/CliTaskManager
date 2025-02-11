@@ -31,7 +31,7 @@ var addtaskCmd = &cobra.Command{
 
 		task.Id = id
 		task.Description = args[0]
-		task.Status = "todo"
+		task.Status = "ToDo"
 		task.CreatedAt = time.Now().Format(time.RFC822)
 		task.UpdatedAt = "Not updated yet."
 		tasks = append(tasks, task)

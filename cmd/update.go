@@ -30,7 +30,7 @@ var updateCmd = &cobra.Command{
 
 		taskID, err := strconv.Atoi(args[0])
 		if err != nil {
-			log.Println("error: first argument must be an integer task ID.")
+			log.Println("error: first argument must be an task ID.")
 			return
 		}
 
