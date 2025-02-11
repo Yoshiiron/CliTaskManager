@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"CliTaskManager/utils"
+	"CliTaskManager/internal"
 	"fmt"
 	"log"
 	"time"
@@ -22,7 +22,7 @@ var addtaskCmd = &cobra.Command{
 			return
 		}
 
-		file, tasks := utils.LoadTasks()
+		file, tasks := internal.LoadTasks()
 		defer file.Close()
 
 		if len(tasks) != 0 {
@@ -36,14 +36,14 @@ var addtaskCmd = &cobra.Command{
 		task.UpdatedAt = "Not updated yet."
 		tasks = append(tasks, task)
 
-		utils.SaveTasks(tasks)
+		internal.SaveTasks(tasks)
 
 		fmt.Println(task)
 	},
 }
 
 var (
-	task utils.Task
+	task internal.Task
 )
 
 func init() {

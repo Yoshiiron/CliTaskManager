@@ -4,7 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"CliTaskManager/utils"
+	"CliTaskManager/internal"
 	"fmt"
 	"log"
 	"strconv"
@@ -20,7 +20,7 @@ var updateCmd = &cobra.Command{
 	Long:  `Update task description.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		file, tasks := utils.LoadTasks()
+		file, tasks := internal.LoadTasks()
 		defer file.Close()
 
 		if len(args) < 2 {
@@ -48,7 +48,7 @@ var updateCmd = &cobra.Command{
 			}
 		}
 
-		utils.SaveTasks(tasks)
+		internal.SaveTasks(tasks)
 
 	},
 }

@@ -4,7 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"CliTaskManager/utils"
+	"CliTaskManager/internal"
 	"log"
 	"strconv"
 
@@ -22,7 +22,7 @@ var deleteCmd = &cobra.Command{
 			return
 		}
 
-		file, tasks := utils.LoadTasks()
+		file, tasks := internal.LoadTasks()
 		defer file.Close()
 
 		id, err := strconv.Atoi(args[0])
@@ -37,7 +37,7 @@ var deleteCmd = &cobra.Command{
 			}
 		}
 
-		utils.SaveTasks(tasks)
+		internal.SaveTasks(tasks)
 	},
 }
 

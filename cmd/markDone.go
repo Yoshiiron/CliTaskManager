@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"CliTaskManager/utils"
+	"CliTaskManager/internal"
 	"fmt"
 	"log"
 	"strconv"
@@ -20,7 +20,7 @@ var markDoneCmd = &cobra.Command{
 			return
 		}
 
-		file, tasks := utils.LoadTasks()
+		file, tasks := internal.LoadTasks()
 		defer file.Close()
 
 		taskID, err := strconv.Atoi(args[0])
@@ -42,7 +42,7 @@ var markDoneCmd = &cobra.Command{
 			}
 		}
 
-		utils.SaveTasks(tasks)
+		internal.SaveTasks(tasks)
 	},
 }
 

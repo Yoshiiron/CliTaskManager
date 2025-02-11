@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"CliTaskManager/utils"
+	"CliTaskManager/internal"
 	"fmt"
 	"strings"
 
@@ -13,7 +13,7 @@ var listCmd = &cobra.Command{
 	Use:   "list [status]",
 	Short: "Lists the issues.",
 	Run: func(cmd *cobra.Command, args []string) {
-		file, tasks := utils.LoadTasks()
+		file, tasks := internal.LoadTasks()
 		defer file.Close()
 
 		if len(args) == 0 {
